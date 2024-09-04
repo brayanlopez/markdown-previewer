@@ -1,27 +1,26 @@
 import { useEffect, useState } from "react";
-import { marked, Marked } from "marked";
+import { marked } from "marked";
+// TODO: check how to change Grid to Grid 2
+//  Grid2 as
 import { Grid, ThemeProvider, Typography, createTheme } from "@mui/material";
+
 import { importMdModules } from "./utils/util";
 import "./App.css";
 
-const theme = createTheme({
-  typography: { fontSize: 6 },
-});
+const theme = createTheme({ typography: { fontSize: 6 } });
 
 function App() {
   const mdModule = importMdModules();
   const [text, setText] = useState("");
 
   // TODO: config setup code higlighting
+  // Marked can be import from marked
   // const marked = new Marked();
   marked.setOptions({ breaks: true });
 
   useEffect(() => {
     //TODO: check how to do this without settimeout
-    console.log("enter to the useeffect");
-    setTimeout(() => {
-      setText(mdModule[0]);
-    }, 100);
+    setTimeout(() => setText(mdModule[0]), 100);
   }, []);
 
   return (
